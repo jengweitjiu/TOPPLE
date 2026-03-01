@@ -300,6 +300,9 @@ class NichePerturbationRanker:
 
         # Per-niche rankings
         for niche, results in self.niche_rankings_.items():
+            if not results:
+                lines.append(f"\n--- Niche {niche} (no candidates) ---")
+                continue
             lines.append(f"\n--- Niche {niche} ({results[0]['n_cells']} cells) ---")
             for r in results[:top_n]:
                 feat_str = " + ".join(r["features"])

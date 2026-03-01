@@ -46,6 +46,13 @@ from .layer3 import (
     SpatialVulnerabilityPipeline,
 )
 
+# Lazy import: TOPPLEData requires anndata for .from_anndata()
+# but core functionality works without it
+try:
+    from .data import TOPPLEData
+except ImportError:
+    pass
+
 __all__ = [
     # Layer 1
     "MobiusDecomposition",

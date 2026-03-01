@@ -75,6 +75,21 @@ For subset S, the k-th order interaction term:
 | Compressed sensing | p > 30 |
 | Hierarchical screening | Exploratory |
 
+## Layer 2: Causal Perturbation Bridge
+
+Connects stability decomposition to biological perturbation prediction.
+
+```python
+from topple.layer2 import PerturbationBridge
+from topple.layer2.perturbation_engine import MockPerturbationEngine
+
+engine = MockPerturbationEngine(X, y, regulon_names, effect_size=1.5)
+bridge = PerturbationBridge(engine=engine, X=X, y=y,
+    feature_names=regulon_names, interactions=sd.interactions_)
+results = bridge.run()
+print(bridge.report())
+```
+
 ## Layer 3: Spatial Vulnerability Mapping
 
 Contextualizes perturbation predictions within tissue architecture.
@@ -109,6 +124,34 @@ print(pipeline.report())
 
 High V = strong destabilization AND weak stromal protection. Niche-discordant perturbations (high spread across niches) are flagged automatically.
 
+## Real Data Connectors
+
+Load pySCENIC + Scanpy/Seurat data and run the full pipeline in one call:
+
+```python
+from topple.data import TOPPLEData
+
+# From AnnData (.h5ad) with pySCENIC results
+data = TOPPLEData.from_anndata(
+    "psoriasis_scenic.h5ad",
+    aucell_key="X_aucell",
+    cell_type_key="cell_type",
+    condition_key="condition",
+    pathological_value="psoriasis",
+    adjacencies_path="adjacencies.csv",  # GRNBoost2 output
+)
+
+# Select regulons and run
+data.select_regulons(regulon_list=["RUNX3", "TBX21", "EOMES", "IRF4", "BATF", "PRDM1"])
+results = data.run_topple(
+    target_type="CD8_TRM",
+    stromal_types=["fibroblast", "endothelial"],
+    max_order=3,
+)
+```
+
+Also supports: Seurat exports (`.h5seurat` → `.h5ad`), standalone CSVs, Harmony-integrated data.
+
 ## Integration
 
 Layer 1 → Layer 2 → Layer 3 (complete)
@@ -119,7 +162,7 @@ Related: [DGSA](https://github.com/jengweitjiu/DGSA-stability) | [IPA](https://g
 
 ```bash
 pytest tests/ -v
-# 55 tests: 18 Layer 1 + 19 Layer 2 + 18 Layer 3
+# 70 tests: 18 Layer 1 + 19 Layer 2 + 18 Layer 3 + 15 Data
 ```
 
 ## License
