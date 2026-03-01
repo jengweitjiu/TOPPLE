@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "topple"
+version = "0.1.0"
+description = "Topological Perturbation Prediction from Landscape Estimation"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Jeng-Wei Tjiu", email = "jengweitjiu@ntu.edu.tw"}
+]
+keywords = [
+    "single-cell genomics",
+    "spatial transcriptomics",
+    "cell state stability",
+    "perturbation prediction",
+    "Mobius inversion",
+    "regulatory networks",
+    "systems biology",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "numpy>=1.21",
+    "scipy>=1.7",
+    "scikit-learn>=1.0",
+    "pandas>=1.3",
+]
+
+[project.optional-dependencies]
+scenic = ["pyscenic>=0.12"]
+spatial = ["squidpy>=1.2", "scanpy>=1.9"]
+perturbation = ["celloracle>=0.12"]
+compressed = ["cvxpy>=1.3"]
+dev = ["pytest>=7.0", "pytest-cov", "black", "ruff"]
+all = ["topple[scenic,spatial,perturbation,compressed,dev]"]
+
+[project.urls]
+Homepage = "https://github.com/jengweitjiu/TOPPLE"
+Documentation = "https://github.com/jengweitjiu/TOPPLE/wiki"
+Repository = "https://github.com/jengweitjiu/TOPPLE"
+Issues = "https://github.com/jengweitjiu/TOPPLE/issues"
+
+[tool.setuptools.packages.find]
+include = ["topple*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.black]
+line-length = 100
+target-version = ["py39"]
