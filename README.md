@@ -75,43 +75,43 @@ For subset S, the k-th order interaction term:
 | Compressed sensing | p > 30 |
 | Hierarchical screening | Exploratory |
 
-## Layer 2: Causal Perturbation Bridge
+## Layer 3: Spatial Vulnerability Mapping
 
-Connects stability decomposition to biological perturbation prediction.
+Contextualizes perturbation predictions within tissue architecture.
 
 ```python
-from topple.layer2 import PerturbationBridge
-from topple.layer2.perturbation_engine import MockPerturbationEngine  # or CellOracleAdapter
+from topple.layer3 import SpatialVulnerabilityPipeline
 
-engine = MockPerturbationEngine(X, y, regulon_names, effect_size=1.5)
-bridge = PerturbationBridge(
-    engine=engine, X=X, y=y,
-    feature_names=regulon_names,
-    interactions=sd.interactions_,
-    de_scores=de_log2fc,  # optional, for IPA weighting
+pipeline = SpatialVulnerabilityPipeline(
+    coordinates=spatial_coords,
+    cell_types=cell_labels,
+    regulon_activity=aucell_matrix,
+    target_type="CD8_TRM",
+    stromal_types=["fibroblast", "endothelial"],
+    n_niches=3,
 )
-results = bridge.run()
-print(bridge.report())
+vmaps = pipeline.run(layer2_destabilizations)
+print(pipeline.report())
 ```
 
-### Layer 2 modules
+### Layer 3 modules
 
 | Module | Description |
 |--------|-------------|
-| `target_selection.py` | Stability + IPA ranking of perturbation candidates |
-| `perturbation_engine.py` | CellOracle adapter + mock engine for testing |
-| `destabilization.py` | Destabilization scoring + selectivity index SI(P) |
-| `bridge.py` | Full L1→L2 pipeline orchestrator |
+| `spatial_buffering.py` | Stromal buffering β(i) from neighborhood density + SICAI coupling + LR signaling |
+| `vulnerability.py` | Core equation: V(i,P) = D(i,P) · (1 - β(i)) |
+| `niche.py` | Niche discovery + niche-stratified perturbation ranking |
+| `pipeline.py` | Full L3 pipeline orchestrator |
 
-### Selectivity Index
+### Spatial Vulnerability Equation
 
-    SI(P) = D_pathological(P) / D_homeostatic(P)
+    V(i, P) = D_pathological(i, P) · (1 - β_spatial(i))
 
-High SI = selective destabilization of disease state. Candidates with SI < 1.0 are flagged as risky.
+High V = strong destabilization AND weak stromal protection. Niche-discordant perturbations (high spread across niches) are flagged automatically.
 
 ## Integration
 
-Layer 1 → Layer 2 (this package) → Layer 3 (spatial vulnerability, planned)
+Layer 1 → Layer 2 → Layer 3 (complete)
 
 Related: [DGSA](https://github.com/jengweitjiu/DGSA-stability) | [IPA](https://github.com/jengweitjiu/IPA-kill-experiment) | STRATA | SICAI
 
@@ -119,7 +119,7 @@ Related: [DGSA](https://github.com/jengweitjiu/DGSA-stability) | [IPA](https://g
 
 ```bash
 pytest tests/ -v
-# 37 tests: 18 Layer 1 + 19 Layer 2
+# 55 tests: 18 Layer 1 + 19 Layer 2 + 18 Layer 3
 ```
 
 ## License

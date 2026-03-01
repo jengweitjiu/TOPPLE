@@ -37,6 +37,14 @@ from .layer2 import (
     SelectivityIndex,
     PerturbationBridge,
 )
+from .layer3 import (
+    StromalBufferingEstimator,
+    SpatialVulnerabilityScorer,
+    VulnerabilityMap,
+    NicheStratifier,
+    NichePerturbationRanker,
+    SpatialVulnerabilityPipeline,
+)
 
 __all__ = [
     # Layer 1
@@ -58,4 +66,11 @@ __all__ = [
     "DestabilizationScorer",
     "SelectivityIndex",
     "PerturbationBridge",
+    # Layer 3
+    "StromalBufferingEstimator",
+    "SpatialVulnerabilityScorer",
+    "VulnerabilityMap",
+    "NicheStratifier",
+    "NichePerturbationRanker",
+    "SpatialVulnerabilityPipeline",
 ]
