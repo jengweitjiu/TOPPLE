@@ -2,13 +2,13 @@
 Perturbation Bridge Pipeline
 ==============================
 
-Orchestrates the complete Layer 1 → Layer 2 workflow:
+Orchestrates the complete Layer 1 -> Layer 2 workflow:
 
     Layer 1 decomposition
-    → Target selection (stability + IPA ranking)
-    → Perturbation simulation (CellOracle / Mock)
-    → Destabilization scoring
-    → Selectivity ranking
+    -> Target selection (stability + IPA ranking)
+    -> Perturbation simulation (CellOracle / Mock)
+    -> Destabilization scoring
+    -> Selectivity ranking
 
 This is the main entry point for TOPPLE Layer 2 analysis.
 """
@@ -30,7 +30,7 @@ from .destabilization import (
 
 class PerturbationBridge:
     """
-    Full Layer 1 → Layer 2 bridge pipeline.
+    Full Layer 1 -> Layer 2 bridge pipeline.
 
     Connects stability decomposition to perturbation prediction with
     selectivity constraints.
@@ -204,7 +204,7 @@ class PerturbationBridge:
             "TOPPLE Layer 2: Perturbation Bridge Report",
             "=" * 65,
             f"Candidates evaluated: {len(self.all_results_)}",
-            f"Viable (D_path ≥ 0.01): {len(self.results_)}",
+            f"Viable (D_path >= 0.01): {len(self.results_)}",
             f"Perturbation type: {self.perturbation_type}",
             "",
         ]

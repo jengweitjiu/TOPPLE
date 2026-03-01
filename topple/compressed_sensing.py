@@ -249,7 +249,7 @@ class CompressedInteractionSensing:
         L1 recovery via scipy linprog (LASSO-like reformulation).
 
         Reformulate: minimize ||I||_1 s.t. ||y - Φ·I||_2 ≤ ε
-        As a linear program with variable splitting I = I+ - I-, I+,I- ≥ 0.
+        As a linear program with variable splitting I = I+ - I-, I+,I- >= 0.
         """
         m, N = Phi.shape
 

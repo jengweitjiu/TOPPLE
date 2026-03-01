@@ -1,0 +1,23 @@
+TOPPLE Analysis: GSE173706 Psoriasis
+==================================================
+
+Data: GSE173706_cellxgene_data.h5ad
+Target: cytotoxic T cell (0 cells)
+TFs: RUNX3, TBX21, EOMES, NR4A1, IRF4, BATF, PRDM1, TOX, BHLHE40, ZNF683, IKZF2, ID2
+Method: exact, max_order=3
+
+NOTE: Using TF gene expression as regulon proxy.
+For publication, run pySCENIC first for AUCell scores.
+
+============================================================
+TOPPLE Layer 1: Higher-Order Stability Decomposition
+============================================================
+Method: exact
+Max order: 3
+Separability gate: FAIL (AUC = 0.5000)
+
+Variance explained by order:
+
+Top interactions (all orders):
+
+No results. Call .run() first.

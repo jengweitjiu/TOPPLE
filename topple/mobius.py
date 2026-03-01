@@ -14,7 +14,7 @@ where Δ(T) is the stability loss upon removing all features in subset T.
 When |S| = 2, this reduces to the DGSA pairwise synergy:
     S(A,B) = Δ({A,B}) - (Δ({A}) + Δ({B}))
 
-Higher-order terms (k ≥ 3) capture regulatory interactions invisible to
+Higher-order terms (k >= 3) capture regulatory interactions invisible to
 pairwise analysis, such as cooperative TF binding, feed-forward loops,
 and coherent multi-input motifs.
 
@@ -89,7 +89,7 @@ def stability_loss(
     remaining = [i for i in range(X.shape[1]) if i not in feature_indices]
 
     if len(remaining) == 0:
-        # All features removed → maximum instability
+        # All features removed -> maximum instability
         return X_full_score
 
     X_ablated = X[:, remaining]

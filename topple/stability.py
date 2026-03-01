@@ -66,10 +66,10 @@ def geometric_depth_cv(
         Mean CV AUC score ∈ [0, 1].
     """
     if X.shape[1] == 0:
-        return 0.5  # No features → random classifier
+        return 0.5  # No features -> random classifier
 
     if len(np.unique(y)) < 2:
-        return 0.5  # Single class → undefined
+        return 0.5  # Single class -> undefined
 
     # Build classifier pipeline
     if classifier == "svm":
@@ -147,7 +147,7 @@ def separability_gate(
         status = "PASS" if passes else "FAIL"
         print(
             f"[TOPPLE] Separability gate: CV AUC = {score:.4f} "
-            f"(threshold = {threshold:.2f}) → {status}"
+            f"(threshold = {threshold:.2f}) -> {status}"
         )
         if not passes:
             print(
@@ -165,8 +165,8 @@ class StabilityDecomposer:
     """
     High-level interface for TOPPLE Layer 1 stability decomposition.
 
-    Orchestrates the full pipeline: separability gating → topology pruning
-    → Möbius decomposition (exact or compressed) → result analysis.
+    Orchestrates the full pipeline: separability gating -> topology pruning
+    -> Möbius decomposition (exact or compressed) -> result analysis.
 
     Parameters
     ----------

@@ -52,7 +52,7 @@ def grn_to_adjacency(
         Ordered list of regulon/TF names matching feature columns.
     mode : str, default="shared_targets"
         How to define regulon connectivity:
-        - "shared_targets": Connected if regulons share ≥ min_shared targets.
+        - "shared_targets": Connected if regulons share >= min_shared targets.
         - "regulatory": Connected if one TF is a target of another's regulon.
         - "combined": Union of both.
     min_shared : int, default=5

@@ -223,7 +223,7 @@ class TargetSelector:
         if max_de == 0:
             return {k: 0.5 for k in de_dict}
 
-        # IPA bonus = 1 - normalized_de (low DE → high bonus)
+        # IPA bonus = 1 - normalized_de (low DE -> high bonus)
         return {k: 1.0 - v / max_de for k, v in de_dict.items()}
 
     def summary(self, top_n: int = 10) -> str:
@@ -249,9 +249,9 @@ class IPAFilter:
     Inverse Prioritization Analysis filter.
 
     Separates features into:
-    - Specification-dominant: high DE, high stability → obvious targets
-    - Maintenance-dominant: low DE, high stability → non-obvious, prioritized
-    - Low-impact: low stability regardless of DE → deprioritized
+    - Specification-dominant: high DE, high stability -> obvious targets
+    - Maintenance-dominant: low DE, high stability -> non-obvious, prioritized
+    - Low-impact: low stability regardless of DE -> deprioritized
 
     Parameters
     ----------
