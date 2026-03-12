@@ -79,6 +79,7 @@ class NicheStratifier:
         n_niches: int = 3,
         strata_zones: Optional[np.ndarray] = None,
     ):
+        """Initialize niche stratifier with spatial coordinates and cell type labels."""
         self.coordinates = coordinates
         self.cell_types = np.array(cell_types)
         self.target_mask = target_mask
@@ -230,6 +231,7 @@ class NichePerturbationRanker:
         vulnerability_maps: list,
         min_cells_per_niche: int = 5,
     ):
+        """Initialize niche perturbation ranker with niche labels and vulnerability maps."""
         self.niche_labels = niche_labels
         self.vulnerability_maps = vulnerability_maps
         self.min_cells_per_niche = min_cells_per_niche

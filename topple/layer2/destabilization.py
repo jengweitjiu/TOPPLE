@@ -50,6 +50,7 @@ class DestabilizationResult:
     state_labels: np.ndarray
 
     def __repr__(self) -> str:
+        """Return a summary string with destabilization score and cell counts."""
         return (
             f"DestabilizationResult("
             f"features={' + '.join(self.feature_names)}, "
@@ -76,6 +77,7 @@ class SelectivityResult:
     rank: int = 0
 
     def __repr__(self) -> str:
+        """Return a summary string with selectivity index and destabilization scores."""
         return (
             f"SelectivityResult("
             f"features={' + '.join(self.feature_names)}, "
@@ -122,6 +124,7 @@ class DestabilizationScorer:
         boundary_threshold: float = 0.5,
         cv_folds: int = 5,
     ):
+        """Initialize the destabilization scorer with training data and classifier."""
         self.X_train = X_train
         self.y_train = y_train
         self.boundary_threshold = boundary_threshold
@@ -261,6 +264,7 @@ class SelectivityIndex:
         homeostatic_label: int = 0,
         min_homeostatic_d: float = 0.01,
     ):
+        """Initialize selectivity index with a fitted destabilization scorer."""
         self.scorer = scorer
         self.pathological_label = pathological_label
         self.homeostatic_label = homeostatic_label

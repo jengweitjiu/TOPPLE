@@ -149,6 +149,7 @@ class TopologyPruner:
         max_distance: int = 2,
         min_degree: int = 1,
     ):
+        """Initialize topology pruner with a GRN adjacency matrix."""
         self.adjacency = adjacency
         self.max_order = max_order
         self.max_distance = max_distance
@@ -290,6 +291,7 @@ class HierarchicalScreener:
         max_order: int = 4,
         top_k_per_order: Optional[int] = None,
     ):
+        """Initialize hierarchical screener with significance and order parameters."""
         self.significance_threshold = significance_threshold
         self.max_order = max_order
         self.top_k_per_order = top_k_per_order

@@ -112,7 +112,7 @@ for label, target_name, s1_name, s1_val, s0_name, s0_val in configs:
         ["k%d=%.1f%%" % (k, v*100) for k, v in sorted(ve.items())]
     ))
 
-    cv_auc = sd.metadata_.get("cv_auc", 0)
+    cv_auc = getattr(sd, "gate_score_", 0)
 
     # --- Layer 2 ---
     print("\n  --- LAYER 2 ---")

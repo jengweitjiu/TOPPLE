@@ -44,6 +44,7 @@ class PerturbationCandidate:
     rank: int = 0
 
     def __repr__(self) -> str:
+        """Return a summary string with rank, features, and composite score."""
         sign = "+" if self.interaction_value > 0 else ""
         return (
             f"PerturbationCandidate(rank={self.rank}, "
@@ -101,6 +102,7 @@ class TargetSelector:
         min_interaction: float = 0.001,
         max_candidates: int = 50,
     ):
+        """Initialize target selector with Layer 1 interactions and scoring weights."""
         self.interactions = interactions
         self.feature_names = feature_names
         self.de_scores = de_scores
@@ -275,6 +277,7 @@ class IPAFilter:
         de_threshold: float = 0.5,
         stability_threshold: float = 0.3,
     ):
+        """Initialize IPA analyzer with interactions and DE scores."""
         self.interactions = interactions
         self.de_scores = de_scores
         self.feature_names = feature_names

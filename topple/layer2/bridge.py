@@ -83,6 +83,7 @@ class PerturbationBridge:
         perturbation_type: str = "knockout",
         verbose: bool = True,
     ):
+        """Initialize the perturbation bridge with engine and Layer 1 interactions."""
         self.engine = engine
         self.X = X
         self.y = y

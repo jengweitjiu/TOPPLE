@@ -264,6 +264,7 @@ class MobiusDecomposition:
         n_jobs: int = 1,
         verbose: bool = True,
     ):
+        """Initialize Mobius decomposition with a scoring function and order limit."""
         self.scorer = scorer
         self.max_order = max_order
         self.allowed_subsets = allowed_subsets

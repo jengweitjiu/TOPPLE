@@ -218,6 +218,7 @@ class StabilityDecomposer:
         adjacency: Optional[np.ndarray] = None,
         verbose: bool = True,
     ):
+        """Initialize the stability decomposer with method selection and parameters."""
         self.max_order = max_order
         self.method = method
         self.classifier = classifier
@@ -259,6 +260,7 @@ class StabilityDecomposer:
 
         # Scorer function
         def scorer(X_sub, y_sub):
+            """Evaluate cross-validated geometric depth AUC on a feature subset."""
             return geometric_depth_cv(
                 X_sub, y_sub,
                 n_splits=self.cv_folds,

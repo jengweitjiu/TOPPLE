@@ -221,6 +221,7 @@ class TOPPLEData:
     _original_cell_mask: Optional[np.ndarray] = field(default=None, repr=False)
 
     def __repr__(self) -> str:
+        """Return a human-readable summary of the TOPPLEData object."""
         parts = [
             f"TOPPLEData: {self.n_cells} cells × {self.n_regulons} regulons",
             f"  Cell types: {len(np.unique(self.cell_types))} unique",
@@ -237,10 +238,12 @@ class TOPPLEData:
 
     @property
     def n_cells(self) -> int:
+        """Number of cells in the dataset."""
         return self.aucell.shape[0]
 
     @property
     def n_regulons(self) -> int:
+        """Number of regulons (features) in the dataset."""
         return self.aucell.shape[1]
 
     # -----------------------------------------------------------------

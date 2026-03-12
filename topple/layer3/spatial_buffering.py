@@ -262,6 +262,7 @@ class StromalBufferingEstimator:
         w_coupling: float = 0.5,
         w_lr: float = 0.2,
     ):
+        """Initialize stromal buffering estimator with spatial and expression data."""
         self.coordinates = coordinates
         self.cell_types = np.array(cell_types)
         self.regulon_activity = regulon_activity

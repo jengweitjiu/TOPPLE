@@ -90,6 +90,7 @@ class CompressedInteractionSensing:
         random_state: int = 42,
         solver: str = "scipy",
     ):
+        """Initialize compressed interaction sensing with measurement parameters."""
         self.n_features = n_features
         self.max_order = max_order
         self.random_state = random_state

@@ -54,6 +54,7 @@ class PerturbationResult:
 
     @property
     def n_cells(self) -> int:
+        """Number of cells in this perturbation result."""
         return len(self.cell_indices)
 
     @property
@@ -156,6 +157,7 @@ class CellOracleAdapter(PerturbationEngine):
         cluster_key: str = "cell_type",
         target_cluster: Optional[str] = None,
     ):
+        """Initialize CellOracle adapter with a fitted oracle and AnnData object."""
         self.oracle = oracle
         self.adata = adata
         self.feature_names = feature_names
@@ -252,6 +254,7 @@ class CellOracleAdapter(PerturbationEngine):
         )
 
     def is_fitted(self) -> bool:
+        """Return True if the CellOracle model is fitted."""
         return self._fitted
 
 
@@ -295,6 +298,7 @@ class MockPerturbationEngine(PerturbationEngine):
         grn_adjacency: Optional[np.ndarray] = None,
         random_state: int = 42,
     ):
+        """Initialize mock perturbation engine with expression data and effect parameters."""
         self.X = X.copy()
         self.y = y.copy()
         self.feature_names = feature_names
@@ -360,4 +364,5 @@ class MockPerturbationEngine(PerturbationEngine):
         )
 
     def is_fitted(self) -> bool:
+        """Return True if the mock engine is ready for simulation."""
         return self._fitted

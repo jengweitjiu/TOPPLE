@@ -73,6 +73,7 @@ class SpatialVulnerabilityPipeline:
         k_neighbors: int = 15,
         verbose: bool = True,
     ):
+        """Initialize the spatial vulnerability pipeline with tissue geometry and cell types."""
         self.coordinates = coordinates
         self.cell_types = np.array(cell_types)
         self.regulon_activity = regulon_activity
